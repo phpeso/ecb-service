@@ -87,10 +87,10 @@ final readonly class EuropeanCentralBankService implements PesoServiceInterface
     public function send(object $request): ErrorResponse|ExchangeRateResponse
     {
         if ($request instanceof CurrentExchangeRateRequest) {
-            return self::performCurrentRequest($request);
+            return $this->performCurrentRequest($request);
         }
         if ($request instanceof HistoricalExchangeRateRequest) {
-            return self::performHistoricalRequest($request);
+            return $this->performHistoricalRequest($request);
         }
         return new ErrorResponse(RequestNotSupportedException::fromRequest($request));
     }
